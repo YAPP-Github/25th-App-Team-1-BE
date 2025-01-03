@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  app:
+    container_name: app
+    # TODO: dockerhub 계정 생성, 이미지 추가
+    # image:
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+
+  nginx:
+    depends_on:
+      - app
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./deploy/nginx
+    ports:
+      - "80:80"
