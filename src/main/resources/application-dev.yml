@@ -24,9 +24,19 @@ springdoc:
 
 discord:
   webhook:
-    url: {DISCORD_WEBHOOK_URL}
+    url: { DISCORD_WEBHOOK_URL }
 
 gemini:
   api:
-    url: ${GEMINI_URL}
+    base-url: ${GEMINI_BASE_URL:https://generativelanguage.googleapis.com}
+    model: ${GEMINI_MODEL:gemini-2.5-flash}
     key: ${GEMINI_KEY}
+    url: ${gemini.api.base-url}/v1beta/models/${gemini.api.model}:generateContent
+
+# 운세 관련 기능 토글
+fortune:
+  prompt:
+    version: ${FORTUNE_PROMPT_VERSION:v3}
+  external-data:
+    enabled: ${EXTERNAL_FORTUNE_ENABLED:true}
+    fallback-to-basic: ${FALLBACK_TO_BASIC:true}
