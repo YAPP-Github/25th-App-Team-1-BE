@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
+    url: jdbc:mysql://localhost:3306/orbit?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     open-in-view: false
@@ -30,9 +30,19 @@ springdoc:
 
 discord:
   webhook:
-    url: {DISCORD_WEBHOOK_URL}
+    url: https://discord.com/api/webhooks/1336300182924431391/fLbRuHveCncXAW-J1zu_JnxA0Zm9nB3Imzd0i8CCo5w9e1zSg620hutPLJ0DMGs-zZMJ
 
 gemini:
   api:
-    url: ${GEMINI_URL}
-    key: ${GEMINI_KEY}
+    base-url: https://generativelanguage.googleapis.com
+    model: gemini-2.5-flash
+    key: AIzaSyDjxPBkwDpPTaY0H1M3Oyk5ggjewDeFgas
+    url: ${gemini.api.base-url}/v1beta/models/${gemini.api.model}:generateContent
+
+# 운세 관련 기능 토글 (로컬에서는 새 기능 테스트)
+fortune:
+  prompt:
+    version: v3
+  external-data:
+    enabled: true
+    fallback-to-basic: true

@@ -1,5 +1,6 @@
 package co.yapp.orbit.fortune.adapter.out.response;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Map;
 import lombok.Getter;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CreateFortuneResponse {
 
     private String dailyFortuneTitle;
@@ -65,6 +67,7 @@ public class CreateFortuneResponse {
 
     @Getter
     @NoArgsConstructor
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class FortuneItemResponse {
         private int score;
         private String title;
@@ -94,6 +97,7 @@ public class CreateFortuneResponse {
 
     @Getter
     @NoArgsConstructor
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class LuckyOutfitResponse {
         private String top;
         private String bottom;

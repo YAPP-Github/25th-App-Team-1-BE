@@ -26,13 +26,15 @@ class CreateFortuneServiceTest {
     private FortuneGenerationPort fortuneGenerationPort;
     private UserApiPort userApiPort;
     private SaveFortunePort saveFortunePort;
+    private ExternalFortuneDataService externalFortuneDataService;
 
     @BeforeEach
     void setUp() {
         fortuneGenerationPort = Mockito.mock(FortuneGenerationPort.class);
         saveFortunePort = Mockito.mock(SaveFortunePort.class);
         userApiPort = Mockito.mock(UserApiPort.class);
-        createFortuneService = new CreateFortuneService(fortuneGenerationPort, saveFortunePort, userApiPort);
+        externalFortuneDataService = Mockito.mock(ExternalFortuneDataService.class);
+        createFortuneService = new CreateFortuneService(fortuneGenerationPort, saveFortunePort, userApiPort, externalFortuneDataService);
     }
 
     @Test
